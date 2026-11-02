@@ -1,0 +1,31 @@
+/* style.css – das Aussehen der Seite */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f5f5f5;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+main {
+  max-width: 640px;
+  margin: 48px auto;
+  padding: 24px;
+  background-color: white;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+button {
+  font-size: 1rem;
+  padding: 8px 16px;
+  border: none;
+  background-color: #ffd500;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e6c000;
+}
