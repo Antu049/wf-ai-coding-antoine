@@ -1,80 +1,56 @@
-# Projektname
-
-> **SPEC.md – Ihr Projektsteckbrief.** Diese Datei beschreibt, *was* Ihre App können soll.
-> Sie wächst über alle vier Kurstage und ist Ihr wichtigster Kontext für die KI.
-> Ersetzen Sie die Platzhalter in *kursiv*. Ein Beispiel finden Sie ganz unten.
+# Swiss Guessr
 
 ## Idee
-*Was macht die App – in einem Satz?*
+Ein Spiel: Man sieht einen Ortsnamen und klickt auf der Schweizer Karte, wo der Ort liegt.
 
 ## Für wen
-*Wer nutzt die App? In welcher Situation?*
+Für mich und meine Freunde – zum Spass und um die Schweiz besser kennenzulernen.
 
 ## User Stories
-*Format: Als … möchte ich …, damit …*
-
-- Als *…* möchte ich *…*, damit *…*.
-- Als *…* möchte ich *…*, damit *…*.
-- Als *…* möchte ich *…*, damit *…*.
+- Als Spieler möchte ich einen Ort sehen und auf die Karte klicken, damit ich rate, wo er liegt.
+- Als Spieler möchte ich sehen, wie viele Kilometer ich daneben war, damit ich weiss, wie gut ich war.
+- Als Spieler möchte ich nach 5 Runden meine Punkte sehen, damit ich mich verbessern kann.
 
 ## Datenmodell
-*Welche Dinge (Objekte) gibt es, und welche Eigenschaften mit welchem Typ haben sie?*
-
 ```
-// Objekt: … · Zweck: …
+// Objekt: Ort · Zweck: Frage im Spiel
+// Koordinaten in LV95 (Schweizer Koordinatensystem, Meter)
 {
-  eigenschaft: "Text",
-  anzahl: 0,
-  erledigt: false
+  name: "Locarno",   // Text
+  e: 2705100,        // Zahl (Ost-Koordinate)
+  n: 1114180         // Zahl (Nord-Koordinate)
 }
 ```
 
 ## Datenkarte
 | Frage | Meine App |
 | --- | --- |
-| Welche Daten gibt es? | |
-| Welche Eingaben braucht es? | |
-| Welche Entscheidungen werden getroffen? | |
-| Was wird wiederholt? | |
-| Was ist der Zustand? | |
-| Welche Ausgabe entsteht? | |
+| Welche Daten gibt es? | Eine Liste mit Schweizer Orten (Name und LV95-Koordinaten) |
+| Welche Eingaben braucht es? | Klick auf die Karte, Knopf «Raten», Knopf «Nächste Runde» |
+| Welche Entscheidungen werden getroffen? | Wie viele Punkte gibt es? (Je näher, desto mehr Punkte) |
+| Was wird wiederholt? | 5 Runden pro Spiel |
+| Was ist der Zustand? | Aktuelle Runde und Punktestand |
+| Welche Ausgabe entsteht? | Richtiger Ort auf der Karte, Distanz in km, Punkte, Endstand |
 
 ## Offene Fragen
-*Was ist noch unklar? (z. B. Antworten aus dem KI-Sparring an Tag 1)*
+### Meine Fragen
+- Wie viele Punkte gibt es für wie viele Kilometer?
+  → Max. 5000 Punkte pro Runde. Je weiter weg, desto weniger Punkte. Die genaue Formel teste ich beim Programmieren.
+- Darf ich die swisstopo-Karte (Orthofoto) verwenden?
+  → Ja, swisstopo-Daten sind frei nutzbar. Ich gebe die Quelle «© swisstopo» an.
 
-- …
+### Fragen aus dem KI-Sparring (Copilot, Modus Ask)
+1. Welche Orte sollen vorkommen, und wie viele braucht es mindestens?
+   → Bekannte Städte, Berge und Seen der Schweiz. Mindestens 30 Orte.
+2. Kann ein Ort in einem Spiel mehrfach vorkommen?
+   → Nein. Jede Runde zeigt einen anderen Ort.
+3. Was zählt als gültiger Tipp, und was passiert ohne Klick?
+   → Man darf überall auf die Karte klicken. Ohne Klick kann man nicht auf «Raten» drücken.
+4. Wie wird die Distanz berechnet und angezeigt?
+   → Mit LV95-Koordinaten und Pythagoras. Anzeige in km.
+5. Wie werden km in Punkte umgerechnet, und wie sieht der Endstand aus?
+   → Je näher, desto mehr Punkte (max. 5000). Am Ende: Total von max. 25 000 Punkten.
 
 ## Nicht im Umfang
-*Was die App bewusst NICHT kann – hilft gegen ausufernde KI-Vorschläge.*
-
-- …
-
----
-
-<details>
-<summary>Beispiel: SPEC.md v0 «Giess-Planer»</summary>
-
-```
-# Giess-Planer
-
-## Idee
-Erinnert mich, wann welche Zimmerpflanze Wasser braucht.
-
-## Für wen
-Mich und meine WG
-
-## User Stories
-- Als Nutzer:in möchte ich Pflanzen erfassen, damit ich den Überblick habe.
-- Als Nutzer:in möchte ich sehen, welche Pflanze heute Wasser braucht.
-- Als Nutzer:in möchte ich eine Pflanze als gegossen markieren,
-  damit der nächste Termin neu berechnet wird.
-
-## Datenmodell
-// Objekt: Pflanze · Zweck: Giess-Erinnerung
-{
-  name: "Monstera",
-  intervall_tage: 7,
-  zuletzt_gegossen: "2026-11-01"
-}
-```
-</details>
+- Kein Login und keine Online-Rangliste
+- Kein Spiel gegen andere (kein Multiplayer)

@@ -24,8 +24,15 @@ Korrektur: Was habe ich geprüft, geändert, verworfen?
 ## Einträge
 
 ### #1 · Tag 1
-Ziel:      
-Modus:     
-Prompt:    
-Ergebnis:  
-Korrektur: 
+Ziel:   Kritische Fragen zu meiner Projektidee bekommen   
+Modus:  Ask  
+Prompt: Hier ist meine Projektidee aus SPEC.md. Stelle mir 5 kritische Fragen, die ich vor dem Programmieren klären sollte. Schlage noch keine Lösung vor.   
+Ergebnis:  5 Fragen zu Orten, Tipp, Distanz und Punkten. Die Fragen waren hilfreich.
+Korrektur: Fragen alle übernommen. Antworten mit Hilfe von Claude formuliert (siehe #2), selbst geprüft und angepasst.
+
+### #2 · Tag 1
+Ziel:      SPEC.md schreiben
+Modus:     Browser-Chat (Claude)
+Prompt:    Die SPEC.md zu schreiben.
+Ergebnis:  Text für die SPEC.md 
+Korrektur: Die Idee (Swiss Guessr) war von mir. Fotos verworfen (zu kompliziert). Selbst entschieden: LV95-Koordinaten, swisstopo-Orthofoto und 30 Orte.
